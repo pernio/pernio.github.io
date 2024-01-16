@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Color catcher</title>
+    <meta name="description" content="Catch the correct color by playing with rgb values!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Color catcher!</h1>
+    </header>
+    <div id="container">
+        <div id="img1"></div>
+        <div id="img2"></div>
+        <div id="slidecontainer">
+            <p>Red: <span id="valueRed"></span></p>
+            <input type="range" min="1" max="255" value="128" class="slider" id="rangeRed">
+            <p>Green: <span id="valueGreen"></span></p>
+            <input type="range" min="1" max="255" value="128" class="slider" id="rangeGreen">
+            <p>Blue: <span id="valueBlue"></span></p>
+            <input type="range" min="1" max="255" value="128" class="slider" id="rangeBlue">
+        </div>
+    </div>
+    <script>
+        var sliderRed = document.getElementById("rangeRed");
+        var outputRed = document.getElementById("valueRed");
+        var sliderGreen = document.getElementById("rangeGreen");
+        var outputGreen = document.getElementById("valueGreen");
+        var sliderBlue = document.getElementById("rangeBlue");
+        var outputBlue = document.getElementById("valueBlue");
+        outputRed.innerHTML = sliderRed.value;
+        outputGreen.innerHTML = sliderGreen.value;
+        outputBlue.innerHTML = sliderBlue.value;
+
+        sliderRed.oninput = function() {
+            outputRed.innerHTML = this.value;
+        }
+        
+        sliderGreen.oninput = function() {
+            outputGreen.innerHTML = this.value;
+        }
+        
+        sliderBlue.oninput = function() {
+            outputBlue.innerHTML = this.value;
+        }
+
+        var container = document.getElementById("container");
+        var startY;
+
+        container.addEventListener("touchstart", function(e) {
+            startY = e.touches[0].clientY;
+        });
+
+        container.addEventListener("touchmove", function(e) {
+            var deltaY = e.touches[0].clientY - startY;
+
+            // Check if the vertical scroll distance is greater than the horizontal scroll distance
+            if (Math.abs(deltaY) > Math.abs(e.touches[0].clientX - e.touches[1].clientX)) {
+                e.preventDefault();
+            }
+        });
+
+    </script>
+</body>
+
+</html>

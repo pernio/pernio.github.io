@@ -29,7 +29,7 @@ h1 {
 }
 
 #img1 {
-    background-color: red;
+    background-color: black;
 }
 
 #img2 {
@@ -39,6 +39,7 @@ h1 {
 /*Slider css - Made by W3Schools*/
 #slidecontainer {
     width: 50%;
+    margin-top: 50px;
 }
 
 .slider {

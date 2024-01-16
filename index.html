@@ -84,9 +84,12 @@
             }
 
             var maxDifference = 255 * 3; // Maximum possible difference for RGB values
-            var diffPercentage = (1 - diff / maxDifference) * 100;
+            var diffPercentage = ((1 - diff / maxDifference) * 100).toFixed(0);
 
-            return diffPercentage.toFixed(2);
+            // Round to the nearest 10%
+            diffPercentage = Math.trunc(diffPercentage);
+
+            return diffPercentage;
         }
 
         // Function to convert RGB to hex

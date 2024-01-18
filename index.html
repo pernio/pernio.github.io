@@ -7,9 +7,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Color catcher</title>
+        <meta name="og:title" content="Color catcher!">
         <meta name="description" content="Catch the correct color by playing with rgb values!">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="hexValue">
+        <meta name="theme-color" id="themeColor" content="">
         <link rel="stylesheet" href="index.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,6 +137,8 @@
                 hexValue.textContent = hex;
                 document.querySelector('header').style.marginBottom = '0';
                 document.querySelector('footer').style.marginTop = '0';
+                var themeColorMeta = document.getElementById('themeColor');
+                themeColorMeta.content = hex;
     
                 // Handle layout based on screen width
                 handleGameEndLayout();

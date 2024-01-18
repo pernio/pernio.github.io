@@ -24,7 +24,7 @@
             <h1>Color catcher!</h1>
         </header>
         <div id="container">
-            <p id="colorDifference">Color Difference: 0%</p>
+            <p id="colorMatch">Color Match: 0%</p>
             <div id="img1"></div>
             <div id="img2"></div>
             <div id="slidecontainer">
@@ -50,7 +50,7 @@
             var outputBlue = document.getElementById("valueBlue");
             var img1 = document.getElementById('img1');
             var img2 = document.getElementById('img2');
-            var colorDifference = document.getElementById('colorDifference');
+            var colorMatch = document.getElementById('colorMatch');
             var container = document.getElementById("container");
             var endHex =  document.getElementById("endHex");
             var hexValue =  document.getElementById("hexValue");
@@ -81,18 +81,18 @@
                 var hex = rgbToHex(sliderRed.value, sliderGreen.value, sliderBlue.value);
                 img1.style.backgroundColor = 'rgb(' + rgb + ')';
     
-                // Calculate color difference percentage
-                var diffPercentage = calculateColorDifference();
-                colorDifference.textContent = 'Color Difference: ' + diffPercentage + '%';
+                // Calculate color match percentage
+                var diffPercentage = calculateColorMatch();
+                colorMatch.textContent = 'Color Match: ' + diffPercentage + '%';
     
-                // Check if the color difference is 100%
+                // Check if the color match is 100%
                 if (diffPercentage >= 100) {
                     triggerTransformation(hex);
                 }
             }
     
-            // Function to calculate color difference percentage
-            function calculateColorDifference() {
+            // Function to calculate color match percentage
+            function calculateColorMatch() {
                 var color1 = getComputedStyle(img1).backgroundColor.match(/\d+/g);
                 var color2 = getComputedStyle(img2).backgroundColor.match(/\d+/g);
                 var diff = 0;
@@ -101,8 +101,8 @@
                     diff += Math.abs(parseInt(color1[i]) - parseInt(color2[i]));
                 }
     
-                var maxDifference = 255 * 3; // Maximum possible difference for RGB values
-                var diffPercentage = ((1 - diff / maxDifference) * 100).toFixed(0);
+                var maxMatch = 255 * 3; // Maximum possible match for RGB values
+                var diffPercentage = ((1 - diff / maxMatch) * 100).toFixed(0);
     
                 // Round to the nearest 10%
                 diffPercentage = Math.trunc(diffPercentage);

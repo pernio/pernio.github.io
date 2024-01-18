@@ -8,6 +8,11 @@
     color: #2a4932;
 }
 
+*::selection {
+    background-color: #75d68e;
+    color: #2a4932;
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -50,6 +55,7 @@ footer {
     height: 150px;
     border-radius: 15px;
     margin-top: 15px;
+    box-shadow: 3px 3px 10px #ccd0cd;
 }
 
 #img1 {
@@ -104,10 +110,13 @@ footer {
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
+    border-radius: 7.5px;
 }
 
 .slider:hover {
-    opacity: 1;
+    opacity: 0.8;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .slider::-webkit-slider-thumb {
@@ -115,15 +124,14 @@ footer {
     appearance: none;
     width: 25px;
     height: 25px;
-    background: #04AA6D;
-    cursor: pointer;
+    background: #5ea36f;
+    border-radius: 10px;
 }
 
 .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: #04AA6D;
-    cursor: pointer;
+    background: #5ea36f;
 }
 
 @media screen and (max-width:365px) {

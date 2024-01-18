@@ -5,27 +5,38 @@
     box-sizing: border-box;
     text-align: center;
     font-family: "M PLUS Rounded 1c", sans-serif;
+    color: #2a4932;
 }
 
 body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 h1 {
-    line-height: 100px;
+    padding: 40px 0 0;
     text-transform: capitalize;
     font-size: 37px;
 }
 
+a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:focus,
+a:hover {
+    color: #5ea36f;
+}
+
 #container {
     margin-top: 30px;
-    justify-content: center;
     display: flex;
     flex-wrap: wrap;
     grid-column-gap: 3em;
+    flex-direction: column;
+    align-items: center;
 }
 
 #img1,
@@ -33,6 +44,7 @@ h1 {
     width: 150px;
     height: 150px;
     border-radius: 15px;
+    margin-top: 15px;
 }
 
 #img1 {
@@ -43,8 +55,14 @@ h1 {
     background-color: green;
 }
 
+#img2,
+#colorDifference {
+    order: -1;
+}
+
 #endHex {
     display: none;
+    padding-bottom: 15px;
 }
 
 header,
@@ -67,8 +85,8 @@ footer {
 
 /*Slider css - Made by W3Schools*/
 #slidecontainer {
-    width: 50%;
-    margin-top: 50px;
+    width: 70%;
+    margin: 30px 0 20px;
 }
 
 .slider {
@@ -101,4 +119,43 @@ footer {
     height: 25px;
     background: #04AA6D;
     cursor: pointer;
+}
+
+@media screen and (max-width:365px) {
+
+    footer {
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (min-width:469px) {
+    #container {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #img1,
+    #img2 {
+        margin-top: 30px;
+    }
+
+    #img2 {
+        order: 0;
+    }
+
+    #colorDifference {
+        width: 100%;
+    }
+
+    #slidecontainer p:nth-child(3),
+    #slidecontainer p:nth-child(5) {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width:750px) {
+    #slidecontainer {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
 }

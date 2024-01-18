@@ -9,6 +9,7 @@
         <title>Color catcher</title>
         <meta name="description" content="Catch the correct color by playing with rgb values!">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="hexValue">
         <link rel="stylesheet" href="index.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,6 @@
             <h1>Color catcher!</h1>
         </header>
         <div id="container">
-            <p id="rgbValue">RGB: 128, 128, 128</p>
             <p id="colorDifference">Color Difference: 0%</p>
             <div id="img1"></div>
             <div id="img2"></div>
@@ -47,7 +47,6 @@
             var outputBlue = document.getElementById("valueBlue");
             var img1 = document.getElementById('img1');
             var img2 = document.getElementById('img2');
-            var rgbValue = document.getElementById('rgbValue');
             var colorDifference = document.getElementById('colorDifference');
             var container = document.getElementById("container");
             var endHex =  document.getElementById("endHex");
@@ -78,7 +77,6 @@
                 var rgb = sliderRed.value + ', ' + sliderGreen.value + ', ' + sliderBlue.value;
                 var hex = rgbToHex(sliderRed.value, sliderGreen.value, sliderBlue.value);
                 img1.style.backgroundColor = 'rgb(' + rgb + ')';
-                rgbValue.textContent = 'RGB: ' + rgb;
     
                 // Calculate color difference percentage
                 var diffPercentage = calculateColorDifference();
@@ -138,7 +136,33 @@
                 hexValue.textContent = hex;
                 document.querySelector('header').style.marginBottom = '0';
                 document.querySelector('footer').style.marginTop = '0';
+    
+                // Handle layout based on screen width
+                handleGameEndLayout();
             }
+    
+            // Handle layout based on screen width
+            function handleGameEndLayout() {
+                var screenWidth = window.innerWidth;
+    
+                if (screenWidth <= 365) {
+                    document.querySelector('header h1').style.display = 'none';
+                    document.querySelector('footer').style.paddingTop = '20px';
+                    document.querySelector('footer').style.borderRadius = '20px';
+                    endHex.style.paddingTop = '0';
+                } else {
+                    document.querySelector('header h1').style.display = 'block';
+                    document.querySelector('footer').style.paddingTop = '0';
+                    document.querySelector('footer').style.borderTopLeftRadius = '0';
+                    document.querySelector('footer').style.borderTopRightRadius = '0';
+                    document.querySelector('footer').style.borderBottomLeftRadius = '20px';
+                    document.querySelector('footer').style.borderBottomRightRadius = '20px';
+                    endHex.style.paddingTop = '15px';
+                }
+            }
+    
+            // Event listener for window resize
+            window.addEventListener('resize', handleGameEndLayout);
     
             container.addEventListener("touchstart", function (e) {
                 startY = e.touches[0].clientY;
@@ -160,9 +184,11 @@
                     Math.floor(Math.random() * 256) + ')';
             }
     
-            // Apply a random color to #img2
-            document.getElementById('img2').style.backgroundColor = getRandomColor();
+            // Apply a random color to #img2 and update the color
+            img2.style.backgroundColor = getRandomColor();
+            updateColor();
         </script>
     </body>
     
     </html>
+    

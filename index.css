@@ -35,7 +35,7 @@ a:hover {
     color: #5ea36f;
 }
 
-#colorDifference,
+#colorMatch,
 footer {
     font-size: 1rem;
 }
@@ -67,7 +67,7 @@ footer {
 }
 
 #img2,
-#colorDifference {
+#colorMatch {
     order: -1;
 }
 
@@ -155,11 +155,11 @@ footer {
         order: 0;
     }
 
-    #colorDifference {
+    #colorMatch {
         width: 100%;
     }
 
-    #colorDifference,
+    #colorMatch,
     footer {
        font-size: 1.1rem;
     }
@@ -176,7 +176,7 @@ footer {
         margin-right: 150px;
     }
     
-    #colorDifference,
+    #colorMatch,
     footer {
        font-size: 1.2rem;
     }

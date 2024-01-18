@@ -29,15 +29,16 @@
             <div id="img2"></div>
             <div id="slidecontainer">
                 <p>Red: <span id="valueRed"></span></p>
-                <input type="range" min="1" max="255" value="128" class="slider" id="rangeRed">
+                <input type="range" min="0" max="255" value="128" class="slider" id="rangeRed">
                 <p>Green: <span id="valueGreen"></span></p>
-                <input type="range" min="1" max="255" value="128" class="slider" id="rangeGreen">
+                <input type="range" min="0" max="255" value="128" class="slider" id="rangeGreen">
                 <p>Blue: <span id="valueBlue"></span></p>
-                <input type="range" min="1" max="255" value="128" class="slider" id="rangeBlue">
+                <input type="range" min="0" max="255" value="128" class="slider" id="rangeBlue">
             </div>
         </div>
         <footer>
             <p id="endHex">Guessed Hex: <span id="hexValue"></span></p>
+            <p id="timer">Time: <span id="timerValue">0</span></p>
             <a href="#" onclick="window.location.reload();">Play again</a>
         </footer>
         <script>
@@ -54,6 +55,10 @@
             var container = document.getElementById("container");
             var endHex =  document.getElementById("endHex");
             var hexValue =  document.getElementById("hexValue");
+            var timerValue = document.getElementById('timerValue');
+            var timerContainer = document.getElementById('timer');
+            var timerInterval;
+            var seconds = 0;
             var body = document.body;
     
             outputRed.innerHTML = sliderRed.value;
@@ -69,10 +74,23 @@
                 outputGreen.innerHTML = this.value;
                 updateColor();
             }
-            
+    
             sliderBlue.oninput = function() {
                 outputBlue.innerHTML = this.value;
                 updateColor();
+            }
+    
+            // Function to start the timer
+            function startTimer() {
+                timerInterval = setInterval(function () {
+                    seconds++;
+                    timerValue.textContent = seconds;
+                }, 1000);
+            }
+    
+            // Function to stop the timer
+            function stopTimer() {
+                clearInterval(timerInterval);
             }
     
             // Function to update the color of #img1
@@ -87,6 +105,7 @@
     
                 // Check if the color match is 100%
                 if (diffPercentage >= 100) {
+                    stopTimer(); // Stop the timer on 100% match
                     triggerTransformation(hex);
                 }
             }
@@ -134,17 +153,20 @@
                 // Hide other objects
                 container.style.display = 'none';
     
-                // Display the hex code
+                // Display the hex code and timer value
+                endHex.innerHTML = 'Guessed Hex: <span>' + hex + '</span><br>Time taken: ' + seconds + ' seconds';
+    
+                // Display the endHex element
                 endHex.style.display = 'block';
-                hexValue.textContent = hex;
                 document.querySelector('header').style.marginBottom = '0';
                 document.querySelector('footer').style.marginTop = '0';
+                timerContainer.style.display = 'none';
     
                 // Handle layout based on screen width
                 handleGameEndLayout();
             }
     
-            // Handle layout based on screen width
+            // Function to handle layout based on screen width
             function handleGameEndLayout() {
                 var screenWidth = window.innerWidth;
     
@@ -167,11 +189,12 @@
             // Event listener for window resize
             window.addEventListener('resize', handleGameEndLayout);
     
-            container.addEventListener("touchstart", function (e) {
+            // Event listener for touch events
+            container.addEventListener('touchstart', function (e) {
                 startY = e.touches[0].clientY;
             });
     
-            container.addEventListener("touchmove", function (e) {
+            container.addEventListener('touchmove', function (e) {
                 var deltaY = e.touches[0].clientY - startY;
     
                 if (Math.abs(deltaY) > Math.abs(e.touches[0].clientX - e.touches[1].clientX)) {
@@ -190,6 +213,9 @@
             // Apply a random color to #img2 and update the color
             img2.style.backgroundColor = getRandomColor();
             updateColor();
+    
+            // Start the timer when the script runs
+            startTimer();
         </script>
     </body>
     

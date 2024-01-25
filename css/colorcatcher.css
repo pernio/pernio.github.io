@@ -1,39 +1,11 @@
 /* style.css */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-align: center;
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    color: #2a4932;
-}
-
-*::selection {
-    background-color: #75d68e;
-    color: #2a4932;
-}
-
 body {
-    background-color: white;
-    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 h1 {
     padding: 40px 0 0;
-    text-transform: capitalize;
-    font-size: 37px;
-}
-
-a {
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a:focus,
-a:hover {
-    color: #5ea36f;
 }
 
 #colorMatch,
@@ -135,6 +107,14 @@ footer {
     background: #5ea36f;
 }
 
+#home i {
+    margin-top: 50px;
+}
+
+#home {
+    position: static;
+}
+
 @media screen and (max-width:365px) {
     footer {
         padding-bottom: 20px;
@@ -162,12 +142,20 @@ footer {
 
     #colorMatch,
     footer {
-       font-size: 1.1rem;
+        font-size: 1.1rem;
     }
 
     #slidecontainer p:nth-child(3),
     #slidecontainer p:nth-child(5) {
         margin-top: 10px;
+    }
+
+    #home i {
+        margin-top: 0;
+    }
+
+    #home {
+        position: absolute;
     }
 }
 
@@ -176,9 +164,9 @@ footer {
         margin-left: 150px;
         margin-right: 150px;
     }
-    
+
     #colorMatch,
     footer {
-       font-size: 1.2rem;
+        font-size: 1.2rem;
     }
 }

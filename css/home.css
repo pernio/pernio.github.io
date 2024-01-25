@@ -1,0 +1,70 @@
+h1 {
+    margin: 50px 0;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+ul {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+li {
+    list-style: none;
+    max-width: 200px;
+    margin: 0 50px 50px;
+
+}
+
+figure {
+    position: relative;
+    box-shadow: 5px 5px 5px #ccc;
+}
+
+figcaption {
+    position: absolute;
+    background-color: white;
+    line-height: 50px;
+    border-radius: 0 0 15px 15px;
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+figure,
+figure img,
+.opacity-box {
+    border-radius: 15px;
+}
+
+figure,
+figure img {
+    width: 100%;
+}
+
+.opacity-box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.opacity-box:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: 0.15s;
+}
+
+#img-1,
+#dummy {
+    background-color: #80C28A;
+}
+
+#dummy {
+    filter: grayscale(1);
+}

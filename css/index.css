@@ -3,6 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: 0.3s;
     text-align: center;
     font-family: "M PLUS Rounded 1c", sans-serif;
     color: #2a4932;
@@ -39,14 +41,24 @@ a {
 a:focus,
 a:hover,
 i:focus,
-i:hover {
+i:hover,
+#submit-btn:focus,
+#submit-btn:hover {
     color: #5ea36f;
+    cursor: pointer;
 }
 
 i:focus,
 i:hover {
     transition: 0.5s;
     transform: scale(1.15) rotateZ(-5deg);
+}
+
+#submit-btn {
+    background-color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
 }
 
 figure:focus,
@@ -59,8 +71,4 @@ figure:hover {
     position: absolute;
     top: 40px;
     left: 40px;
-}
-
-#discord i {
-    margin-bottom: 50px;
 }

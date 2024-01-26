@@ -3,7 +3,7 @@ h1 {
 }
 
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 ul {
@@ -60,11 +60,101 @@ figure img {
     transition: 0.15s;
 }
 
-#img-1,
-#dummy {
-    background-color: #80C28A;
-}
-
 #dummy {
     filter: grayscale(1);
+}
+
+form {
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 0 20px;
+    padding: 50px;
+}
+
+.contact-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#name-input {
+    margin-bottom: 40px;
+}
+
+.contact-container textarea,
+.contact-container input[type="text"],
+.contact-container input[type="email"] {
+    font-size: 20px;
+    width: 100%;
+    border: none;
+    line-height: 1;
+    border-bottom: 2px solid #ccc;
+    padding: 5px 0;
+    background-color: transparent;
+    outline: none;
+    text-align: left;
+    transition: border-color 0.3s;
+}
+
+#emailInput {
+    display: none;
+}
+
+.contact-container .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ccc;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.contact-container .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #333;
+    transition: width 0.3s ease;
+}
+
+.contact-container input[type="text"]:focus ~ .label,
+.contact-container input[type="text"]:valid ~ .label,
+.contact-container input[type="email"]:focus ~ .label,
+.contact-container input[type="email"]:valid ~ .label,
+.contact-container textarea:focus ~ .label,
+.contact-container textarea:valid ~ .label {
+    top: -20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-container textarea:focus,
+.contact-container textarea:valid {
+    margin-top: 10px;
+}
+
+.contact-container input[type="text"]:focus ~ .underline,
+.contact-container input[type="text"]:valid ~ .underline,
+.contact-container input[type="email"]:focus ~ .underline,
+.contact-container input[type="email"]:valid ~ .underline,
+.contact-container textarea:focus ~ .underline,
+.contact-container textarea:valid ~ .underline {
+    width: 100%;
+}
+
+footer {
+    padding-bottom: 100px;
+}
+
+@media screen and (min-width:640px) {
+    form {
+        margin: 0 auto;
+    }
+
+    footer {
+        padding-bottom: 50px;
+    }
 }

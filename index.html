@@ -7,9 +7,9 @@
 
     <meta property="og:title" content="Color catcher!">
     <meta property="og:description" content="The home page of all different kind of games!">
-    <meta property="og:image" content="images/logo.svg">
+    <meta property="og:image" content="images/colorcatcher.svg">
     <meta name="theme-color" content="#75d68e">
-    <link rel="icon" href="images/logo.svg">
+    <link rel="icon" href="images/colorcatcher.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/home.css">
@@ -27,7 +27,7 @@
         <li>
             <a href="colorcatcher.html" class="a-round">
                 <figure>
-                    <img src="images/logo.svg" alt="green box with questionmark" id="img-1">
+                    <img src="images/colorcatcher-card.svg" alt="green box with questionmark">
                     <div class="opacity-box"></div>
                     <figcaption>Color catcher</figcaption>
                 </figure>
@@ -36,7 +36,7 @@
         <li>
             <a href="#" class="a-round">
                 <figure>
-                    <img src="images/logo.svg" alt="gray box with questionmark" id="dummy">
+                    <img src="images/ballpoppers-card.svg" alt="grey balls" id="dummy">
                     <div class="opacity-box"></div>
                     <figcaption>Coming soon</figcaption>
                 </figure>
@@ -45,7 +45,7 @@
         <li>
             <a href="#" class="a-round">
                 <figure>
-                    <img src="images/logo.svg" alt="gray box with questionmark" id="dummy">
+                    <img src="images/colorcatcher-card.svg" alt="gray box with questionmark" id="dummy">
                     <div class="opacity-box"></div>
                     <figcaption>Coming soon</figcaption>
                 </figure>
@@ -54,7 +54,7 @@
         <li>
             <a href="#" class="a-round">
                 <figure>
-                    <img src="images/logo.svg" alt="gray box with questionmark" id="dummy">
+                    <img src="images/colorcatcher-card.svg" alt="gray box with questionmark" id="dummy">
                     <div class="opacity-box"></div>
                     <figcaption>Coming soon</figcaption>
                 </figure>
@@ -63,7 +63,7 @@
         <li>
             <a href="#" class="a-round">
                 <figure>
-                    <img src="images/logo.svg" alt="gray box with questionmark" id="dummy">
+                    <img src="images/colorcatcher-card.svg" alt="gray box with questionmark" id="dummy">
                     <div class="opacity-box"></div>
                     <figcaption>Coming soon</figcaption>
                 </figure>
@@ -72,7 +72,7 @@
         <li>
             <a href="#" class="a-round">
                 <figure>
-                    <img src="images/logo.svg" alt="gray box with questionmark" id="dummy">
+                    <img src="images/colorcatcher-card.svg" alt="gray box with questionmark" id="dummy">
                     <div class="opacity-box"></div>
                     <figcaption>Coming soon</figcaption>
                 </figure>
@@ -81,8 +81,110 @@
     </ul>
     <footer>
         <h2>Contact me!</h2>
-        <a href="https://discordapp.com/users/720221966627373097" id="discord"><i class="fa-brands fa-discord fa-2xl"></i></a>
+
+        <form id="myForm" title="Test form - Fill out in entirety." enctype="multipart/form-data" method="post" action="https://discord.com/api/webhooks/1200484063211950110/FgzHi-C62eHJTGw0AvC4JguesCuiaKyZaBJDZrSZ98GV0GCwFL73WpdxRfqRkh2NAytJ?redirect_url=https://google.com">
+            <div class="contact-container" id="name-input">
+                <input type="text" name="name" required>
+                <label for="name" class="label">Nickname</label>
+                <div class="underline"></div>
+            </div>
+
+            <div class="contact-container">
+                <textarea name="embeds" style="resize: vertical;" maxlength="300" required></textarea>
+                <label for="embeds" class="label" id="message-field-correction">Message (max: 300)</label>
+                <div class="underline"></div>
+            </div>
+
+            <div class="contact-container">
+                <input type="checkbox" id="emailCheckbox">
+                <label for="emailCheckbox">Want to receive a response via email?</label>
+            </div>
+
+            <div class="contact-container" id="emailInput">
+                <input type="email" name="email" required>
+                <label for="email" class="label">Email</label>
+                <div class="underline"></div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-outline-secondary btn-block" type="submit" id="submit-btn">Submit Form</button>
+            </div>
+        </form>
     </footer>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            // Prevent the default form submit action
+            event.preventDefault();
+
+            // Get the form data as a FormData object
+            var formData = new FormData(this);
+
+            // Get the webhook URL from the form action attribute
+            var webhookUrl = this.getAttribute("action");
+
+            // Create the JSON payload for the embed with a red color
+            var payload = {
+                embeds: [{
+                    title: 'New Form Submission',
+                    color: 0x80C28A, // Green color
+                    fields: [{
+                            name: 'Name',
+                            value: formData.get('name'),
+                            inline: true
+                        },
+                        {
+                            name: 'Content',
+                            value: formData.get('embeds'),
+                            inline: true
+                        },
+                        {
+                            name: 'Email',
+                            value: formData.get('email') || 'Not provided',
+                            inline: true
+                        }
+                    ]
+                }]
+            };
+
+            // Send the webhook request using the fetch API
+            fetch(webhookUrl, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(function(response) {
+                    // Check if the webhook request was successful
+                    if (response.ok) {
+                        // Do something after the webhook request succeeds, such as showing a confirmation message
+                        alert("Webhook message sent successfully!");
+                    } else {
+                        // Do something after the webhook request fails, such as showing an error message
+                        alert("Webhook message failed: " + response.statusText);
+                    }
+                })
+                .catch(function(error) {
+                    // Do something after the webhook request errors, such as showing an error message
+                    alert("Webhook message error: " + error.message);
+                });
+        });
+
+        document.getElementById("emailCheckbox").addEventListener("change", function() {
+            var emailInput = document.getElementById("emailInput");
+            var emailField = document.getElementsByName("email")[0];
+
+            if (this.checked) {
+                emailInput.style.display = "block";
+                emailField.setAttribute("required", "required");
+            } else {
+                emailInput.style.display = "none";
+                emailField.removeAttribute("required");
+            }
+        });
+
+    </script>
 </body>
 
 </html>
